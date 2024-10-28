@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link  href="/styleHome.css" rel="stylesheet">
-    
+    <link href="./css/styleHome.css" rel="stylesheet">
     <title>Home</title>
-</head>
+</head> 
 <body>
 
     <div class="container">
@@ -14,20 +13,29 @@
             <div class="sidebar-logo">+</div>
             <ul class="sidebar-menu">
                 <li class="menu-item selected">Search</li>
-                <li class="menu-item">Catalog</li>
-                <li class="menu-item">You house</li>
-                <li class="menu-item">Services</li>
+                <li class="menu-item"><a href="/catalog">Catalog</a></li>
+                <li class="menu-item"><a href="/house">Your house</a></li>
+                <li class="menu-item"><a href="/services">Services</a></li>
             </ul>
         </aside>
         <main class="main-content">
             <header class="header">
                 <div class="search-section">
                     <div class="search-content">
-                        <h1>Search (here the user will search the house)</h1>
+                        <h1>Search for a House</h1>
                         <p>Address, Zip Code, City, State, Country</p>
+                        
+                        <!-- Formulario de búsqueda -->
+                        <form action="/search" method="GET">
+                            <input type="text" name="address" placeholder="Enter address" required>
+                            <button type="submit">Search</button>
+                        </form>
+                        
+                        
                         <div class="search-buttons">
+                            <a href="/services">
                             <button>Go here to see services for your home</button>
-                            <a href="Page 2.html">
+                            <a href="/catalog">
                                 <button>Go here to see available houses</button>
                             </a>
                         </div>
@@ -65,6 +73,3 @@
 
 </body>
 </html>
-
-
-<%# AQUI VA TODO LO QUE SE TIENE QUE VER EN EL HOME PAGE %>
