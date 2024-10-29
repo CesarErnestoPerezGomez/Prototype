@@ -34,7 +34,7 @@
 }
 
 .house-image {
-    background-color: #dcdcdc;
+    background-color: blue;
     width: 100%;
     height: 200px;
     display: flex;
@@ -60,3 +60,48 @@
 .footer p {
     color: #666;
 }
+.image1 {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Para esquinas redondeadas */
+    margin-bottom: 10px;
+}
+
+.image2 {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Para esquinas redondeadas */
+    margin-bottom: 10px;
+}
+
+
+.image3 {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Para esquinas redondeadas */
+    margin-bottom: 10px;
+}
+
+.image4 {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Para esquinas redondeadas */
+    margin-bottom: 10px;
+}
+
+.image5 {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Para esquinas redondeadas */
+    margin-bottom: 10px;
+}
+
+.Logo {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Para esquinas redondeadas */
+    margin-bottom: 10px;
+}
+
+
+
