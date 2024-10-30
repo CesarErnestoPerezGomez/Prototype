@@ -1,50 +1,20 @@
-
 .header {
     text-align: center;
-    margin-bottom: 60px; 
+    margin-bottom: 20px;
+    margin-top: 20px;
+    
 }
-
-
 
 .header h1 {
-    font-size: 48px; 
-    color: #ffffff; 
+    font-size: 28px;
+    color: #333;
 }
-
-.btn-me{
-    background-color: #8C52FF;
-}
-  
-
-.input-group {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .input-group .form-control {
-    border-radius: 30px 0 0 30px;
-    padding: 28px 32px;
-    font-size: 16px;
-  }
-  
-  .input-group .btn {
-    border-radius: 0 30px 30px 0;
-    background-color: #8C52FF;
-    color: #ffffff;
-    padding: 15px 20px;
-  }
-  
-  .input-group .btn:hover {
-    background-color: #7857bc;
-  }
-  
 
 .header p {
-    font-size: 18px; 
-    color: #dddddd; 
+    font-size: 16px;
+    color: #666;
     margin-top: 10px;
 }
-
 
 .catalog {
     display: flex;
@@ -53,12 +23,11 @@
     padding: 20px;
 }
 
-
 .house-item {
-    background-color: #ffffff; 
-    border-radius: 15px; 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
-    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 0 10px;
     width: 30%;
     display: flex;
     flex-direction: column;
@@ -67,13 +36,12 @@
 }
 
 .house-image {
-    background-color: #8C52FF; 
     width: 100%;
     height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ffffff;
+    color: #666;
     font-size: 14px;
     margin-bottom: 20px;
     border-radius: 8px;
@@ -81,41 +49,86 @@
 
 .house-description {
     font-size: 16px;
-    color: #333333; 
+    color: #333;
 }
-
 
 .footer {
     text-align: center;
-    margin-top: 60px; 
+    margin-top: 40px;
     font-size: 14px;
 }
 
 .footer p {
-    color: #666666; 
+    color: #666;
 }
-
-.image1,
-.image2,
-.image3,
-.image4,
-.image5,
-.Logo {
+.image1 {
     width: 100%;
     height: auto;
-    border-radius: 8px; 
+    border-radius: 8px; /* Para esquinas redondeadas */
+    margin-bottom: 10px;
+}
+
+.image2 {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Para esquinas redondeadas */
     margin-bottom: 10px;
 }
 
 
-@media (max-width: 768px) {
-    .catalog {
-        flex-direction: column; 
-        align-items: center; 
-    }
-
-    .house-item {
-        width: 90%;
-    }
+.image3 {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Para esquinas redondeadas */
+    margin-bottom: 10px;
 }
 
+.image4 {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Para esquinas redondeadas */
+    margin-bottom: 10px;
+}
+
+.image5 {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Para esquinas redondeadas */
+    margin-bottom: 10px;
+}
+
+.Logo {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Para esquinas redondeadas */
+    margin-bottom: 10px;
+}
+
+
+
+.navbar {
+  padding: 10px 20px;
+  height: 100px;
+
+}
+
+.navbar-nav .nav-link {
+  padding-top: 4px;   /* Replaced 0.5rem with 4px */
+  padding-bottom: 4px;
+}
+
+
+.navbar-brand img {
+  width: 40px;  /* Reduced width from 50px to 40px */
+  height: auto; /* Maintain aspect ratio */
+  /* Removed the transform property */
+}
+
+
+.catalog .row {
+    justify-content: center;
+}
+.card {
+    margin: 0 10px; /* Espaciado horizontal entre las tarjetas */
+    padding: 10px;
+}
