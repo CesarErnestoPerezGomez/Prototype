@@ -1,15 +1,14 @@
+
 .header {
     text-align: center;
-    margin-bottom: 20px;
-    margin-top: 20px;
-    
+    margin-bottom: 60px; 
 }
 
 
 
 .header h1 {
-    font-size: 28px;
-    color: #333;
+    font-size: 48px; 
+    color: #ffffff; 
 }
 
 .btn-me{
@@ -41,10 +40,11 @@
   
 
 .header p {
-    font-size: 16px;
-    color: #666;
+    font-size: 18px; 
+    color: #dddddd; 
     margin-top: 10px;
 }
+
 
 .catalog {
     display: flex;
@@ -53,10 +53,11 @@
     padding: 20px;
 }
 
+
 .house-item {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; 
+    border-radius: 15px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); 
     padding: 20px;
     width: 30%;
     display: flex;
@@ -66,13 +67,13 @@
 }
 
 .house-image {
-    
+    background-color: #8C52FF; 
     width: 100%;
     height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #666;
+    color: #ffffff;
     font-size: 14px;
     margin-bottom: 20px;
     border-radius: 8px;
@@ -80,79 +81,41 @@
 
 .house-description {
     font-size: 16px;
-    color: #333;
+    color: #333333; 
 }
+
 
 .footer {
     text-align: center;
-    margin-top: 40px;
+    margin-top: 60px; 
     font-size: 14px;
 }
 
 .footer p {
-    color: #666;
-}
-.image1 {
-    width: 100%;
-    height: auto;
-    border-radius: 8px; /* Para esquinas redondeadas */
-    margin-bottom: 10px;
+    color: #666666; 
 }
 
-.image2 {
-    width: 100%;
-    height: auto;
-    border-radius: 8px; /* Para esquinas redondeadas */
-    margin-bottom: 10px;
-}
-
-
-.image3 {
-    width: 100%;
-    height: auto;
-    border-radius: 8px; /* Para esquinas redondeadas */
-    margin-bottom: 10px;
-}
-
-.image4 {
-    width: 100%;
-    height: auto;
-    border-radius: 8px; /* Para esquinas redondeadas */
-    margin-bottom: 10px;
-}
-
-.image5 {
-    width: 100%;
-    height: auto;
-    border-radius: 8px; /* Para esquinas redondeadas */
-    margin-bottom: 10px;
-}
-
+.image1,
+.image2,
+.image3,
+.image4,
+.image5,
 .Logo {
     width: 100%;
     height: auto;
-    border-radius: 8px; /* Para esquinas redondeadas */
+    border-radius: 8px; 
     margin-bottom: 10px;
 }
 
 
+@media (max-width: 768px) {
+    .catalog {
+        flex-direction: column; 
+        align-items: center; 
+    }
 
-.navbar {
-  padding: 10px 20px;
-  height: 100px;
-
+    .house-item {
+        width: 90%;
+    }
 }
-
-.navbar-nav .nav-link {
-  padding-top: 4px;   /* Replaced 0.5rem with 4px */
-  padding-bottom: 4px;
-}
-
-
-.navbar-brand img {
-  width: 40px;  /* Reduced width from 50px to 40px */
-  height: auto; /* Maintain aspect ratio */
-  /* Removed the transform property */
-}
-
 
