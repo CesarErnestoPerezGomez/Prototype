@@ -1,16 +1,18 @@
-require ('dotenv').config();
+require('dotenv').config();
 const express = require('express');
+const mongoose = require("mongoose");
+const bodyParser = require('body-parser');
+
 const app = express();
-const mongoose=require("mongoose");
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
-app.use(express.static('public'));
-app.engine("ejs", require("ejs").renderFile); 
-app.set("view engine","ejs");
-
+// Configuración de MongoDB
 var user = process.env.DB_USER;
 var password = process.env.DB_PASS;
-var db = process.env.DB ;       
+var db = process.env.DB;
 
 const mongoUrl = `mongodb+srv://${user}:${password}@cluster0.2f8ph.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
@@ -35,15 +37,7 @@ mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
   const House = mongoose.model('House', houseSchema);
   module.exports = House;
 
-  
-app.get('/', (req, res) => {
-        const data = {
-          title: 'PRUEBA',
-          message: 'ESTA NO ES VERSION FINAL, ES UNA PRUEBA',
-          items: ['Elemento 1', 'Elemento 2', 'Elemento 3']
-        };
-        res.render('home', data); 
-      });
+
 
   app.route('/search')
       .get((req, res) => {
@@ -127,9 +121,40 @@ app.get('/', (req, res) => {
 });
     
       
+
+
+
+
+// Ruta para mostrar el formulario de inicio de sesión
+app.get('/', (req, res) => {
+    res.render('login'); // Renderiza el formulario de login en `login.ejs`
+});
+
+// Ruta para manejar la autenticación (POST) - Ahora acepta cualquier email y contraseña
+app.post('/login', (req, res) => {
+    const { email, password } = req.body;
+
+    // No se valida el email y la contraseña, simplemente redirige al usuario a la página de inicio
+    res.redirect('/home'); // Redirige a la página de inicio (`home.ejs`)
+});
+// Ruta para mostrar la página de inicio después de autenticarse
+app.get('/home', (req, res) => {
+    const data = {
+        title: 'PRUEBA',
+        message: 'ESTA NO ES VERSION FINAL, ES UNA PRUEBA',
+        items: ['Elemento 1', 'Elemento 2', 'Elemento 3']
+    };
+    res.render('home', data); // Renderiza 'home.ejs' con los datos
+});
+
+// Rutas para el catálogo y los detalles de la casa
+app.get('/catalog', (req, res) => {
+    res.render('page2');
+});
+
 app.get('/house', (req, res) => {
     res.render('page3');
-      });
+});
 
 app.get('/services', (req, res) => {
     res.render('page4');
@@ -137,5 +162,5 @@ app.get('/services', (req, res) => {
       
   
 app.listen(3000, () => {
-  console.log(`Servidor corriendo en puerto 3000`);
+    console.log('Servidor corriendo en puerto 3000');
 });
