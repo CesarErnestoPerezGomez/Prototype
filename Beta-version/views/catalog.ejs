@@ -10,20 +10,7 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow">
-        <div class="container">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" href="/catalog">Buy</a></li>
-                <li class="nav-item"><a class="nav-link" href="/catalog">Rent</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Sell</a></li>
-            </ul>
-            <a class="navbar-brand mx-auto" href="/"><img src="/pics/Black White Simple House Logo.svg" alt="Logo"></a>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Help</a></li>
-            </ul> 
-        </div>
-    </nav>
+    <%- include("partials/nav_bar"); -%>
 
     <header class="header text-center">
         <h1>House Catalog</h1>
@@ -33,33 +20,28 @@
     <section class="catalog container mt-4">
         <div class="row">
             <% Houses.forEach(house => { %>
-                <div class="col house-item">
+                <div class="col-lg-4 col-md-4 col-sm-6 house-item">
                     <div class="card mb-4">
                         <div class="house-image">
                             <img src="<%= house.imageurl %>" class="card-img-top" alt="Image of <%= house.description %>">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title"><%= house.name %></h5>
+                            <h5 class="card-title "><%= house.name %></h5>
                             <p class="card-text"><strong>City:</strong> <%= house.city %></p>
                             <p class="card-text"><strong>ZIP Code:</strong> <%= house.zipCode %></p>
                             <p class="card-text"><strong>Price:</strong> $<%= house.price.toLocaleString() %></p>
-                            <a href="/house" class="btn btn-primary">View Details</a>
+                            <a href="/house/<%= house.zipCode %>" class="btn btn-outline-secondary">Ver Detalles</a>
+
+                            <!-- Botones de Save y Share -->
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-outline-success btn-sm save-btn"><i class="fas fa-heart"></i> Save</button>
+                                <button class="btn btn-outline-secondary btn-sm share-btn"><i class="fas fa-share-alt"></i> Share</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-        </div>
             <% }) %>
-        </section>
-
-
-
-    <footer class="footer bg-light text-center py-3">
-        <div class="footer-content">
-            <p>&copy; 2024 House Search</p>
         </div>
-    </footer>
+    </section>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    <%- include("partials/footer2"); -%>

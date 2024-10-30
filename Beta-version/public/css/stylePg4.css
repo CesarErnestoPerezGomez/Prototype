@@ -117,7 +117,7 @@ body {
   
   .navbar-brand img {
     width: 40px;  /* Reduced width from 50px to 40px */
-    height: auto; /* Maintain aspect ratio */
+    height: 80px; /* Maintain aspect ratio */
     /* Removed the transform property */
   }
   

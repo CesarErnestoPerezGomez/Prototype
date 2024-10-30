@@ -123,22 +123,8 @@ mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
       
 
 
-
-
-// Ruta para mostrar el formulario de inicio de sesión
-app.get('/', (req, res) => {
-    res.render('login'); // Renderiza el formulario de login en `login.ejs`
-});
-
-// Ruta para manejar la autenticación (POST) - Ahora acepta cualquier email y contraseña
-app.post('/login', (req, res) => {
-    const { email, password } = req.body;
-
-    // No se valida el email y la contraseña, simplemente redirige al usuario a la página de inicio
-    res.redirect('/home'); // Redirige a la página de inicio (`home.ejs`)
-});
 // Ruta para mostrar la página de inicio después de autenticarse
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
     const data = {
         title: 'PRUEBA',
         message: 'ESTA NO ES VERSION FINAL, ES UNA PRUEBA',
@@ -148,19 +134,68 @@ app.get('/home', (req, res) => {
 });
 
 // Rutas para el catálogo y los detalles de la casa
-app.get('/catalog', (req, res) => {
-    res.render('page2');
+app.get('/house/:zipCode', (req, res) => {
+  const zipCode = req.params.zipCode;
+  
+  const Houses = [
+    {
+      city: "Zapopan",
+      zipCode: "43221",
+      price: 245000,
+      name: "Modern Villa",
+      imageurl: "/pics/casa5.jpeg",
+    },
+    {
+      city: "Tlaquepaque",
+      zipCode: "43243",
+      price: 450500,
+      name: "Cozy Cottage",
+      imageurl: "/pics/casa4.jpeg",
+    },
+    {
+      city: "Tonala",
+      zipCode: "43256",
+      price: 434000,
+      name: "Urban Apartment",
+      imageurl: "/pics/casa3.jpeg",
+    }
+  ];
+
+  // Encontrar la casa que coincide con el zipCode
+  const house = Houses.find(house => house.zipCode === zipCode);
+
+  if (house) {
+    // Renderizar la vista de detalles con la información de la casa
+    res.render('page3', { house });
+  } else {
+    res.status(404).send('Casa no encontrada');
+  }
 });
 
-app.get('/house', (req, res) => {
-    res.render('page3');
-});
 
 app.get('/services', (req, res) => {
     res.render('page4');
       });
       
+ app.get('/sell', (req, res) => {
+        res.render('sell');
+          });
   
 app.listen(3000, () => {
     console.log('Servidor corriendo en puerto 3000');
 });
+
+
+
+// Ruta para mostrar el formulario de inicio de sesión
+ //app.get('/', (req, res) => {
+   // res.render('login'); // Renderiza el formulario de login en `login.ejs`
+//});
+
+// Ruta para manejar la autenticación (POST) - Ahora acepta cualquier email y contraseña
+//app.post('/login', (req, res) => {
+  //  const { email, password } = req.body;
+
+    // No se valida el email y la contraseña, simplemente redirige al usuario a la página de inicio
+ //   res.redirect('/home'); // Redirige a la página de inicio (`home.ejs`)
+//});

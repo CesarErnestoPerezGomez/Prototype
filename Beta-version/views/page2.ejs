@@ -1,4 +1,3 @@
-<%# CATALOG %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,35 +11,27 @@
     <title>Catalog</title>
 </head>
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow">
-        <div class="container">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item"><a class="nav-link" href="/catalog">Buy</a></li>
-                <li class="nav-item"><a class="nav-link" href="/catalog">Rent</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Sell</a></li>
-            </ul>
-            <a class="navbar-brand mx-auto" href="/"><img src="/pics/Black White Simple House Logo.svg" alt="Logo"></a>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Help</a></li>
-            </ul> 
-        </div>
-    </nav>
+    <%- include("partials/nav_bar"); -%>
 
     <header class="header text-center">
         <h1>House Catalog</h1>
         <p>Here are the available houses</p>
     </header>
 
-    <form action="/search" method="get" class="d-flex w-100">
-        <input type="text" name="address" class="form-control" placeholder="Enter a city or ZIP code (Zapopan, 43243)" aria-label="Search Address" aria-describedby="search-button" required>
-        <div class="input-group-append">
-            <button type="submit" class="btn btn-secondary" id="search-button">
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </button>                              
+    <div class="container">
+        
+        <div class="input-group mt-4">
+            <form action="/search" method="get" class="d-flex w-100">
+                <input type="text" name="address" class="form-control" placeholder="Enter a city or ZIP code (Zapopan, 43243)" aria-label="Search Address" aria-describedby="search-button" required>
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-secondary" id="search-button">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>                              
+                </div>
+            </form>
+            
         </div>
-    </form>
+    </div>
 
     <section class="catalog container mt-4">
         <div class="row">
@@ -58,7 +49,13 @@
                             <p class="card-text"><strong>City:</strong> <%= house.city %></p>
                             <p class="card-text"><strong>ZIP Code:</strong> <%= house.zipCode %></p>
                             <p class="card-text"><strong>Price:</strong> $<%= house.price.toLocaleString() %></p>
-                            <a href="/house" class="btn btn-primary">View Details</a>
+                            <a href="/house/<%= house.zipCode %>" class="btn btn-outline-secondary">Ver Detalles</a>
+                             <!-- Botones de Save y Share -->
+                             <div class="d-flex justify-content-between">
+                                <button class="btn btn-outline-success btn-sm save-btn"><i class="fas fa-heart"></i> Save</button>
+                                <button class="btn btn-outline-secondary btn-sm share-btn"><i class="fas fa-share-alt"></i> Share</button>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -71,13 +68,4 @@
 
 
 
-    <footer class="footer bg-light text-center py-3">
-        <div class="footer-content">
-            <p>&copy; 2024 House Search</p>
-        </div>
-    </footer>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+    <%- include("partials/footer2"); -%>
