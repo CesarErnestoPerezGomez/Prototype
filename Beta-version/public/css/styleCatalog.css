@@ -1,6 +1,8 @@
 .header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    
 }
 
 .header h1 {
@@ -103,5 +105,24 @@
     margin-bottom: 10px;
 }
 
+
+
+.navbar {
+  padding: 10px 20px;
+  height: 100px;
+
+}
+
+.navbar-nav .nav-link {
+  padding-top: 4px;   /* Replaced 0.5rem with 4px */
+  padding-bottom: 4px;
+}
+
+
+.navbar-brand img {
+  width: 40px;  /* Reduced width from 50px to 40px */
+  height: auto; /* Maintain aspect ratio */
+  /* Removed the transform property */
+}
 
 
