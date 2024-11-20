@@ -2,33 +2,37 @@ const express = require('express');
 const mongoose = require("mongoose");
 const cors = require('cors');
 const userModel = require('./src/models/users')
-
-// const HouseModel  = require('./src/models/houses')
-
- const bodyParser = require('body-parser');
-
+const bodyParser = require('body-parser');
+const HouseModel  = require('./src/models/houses')
 const app = express();
 app.use(cors());
 app.use(express.json());  // Parse JSON data
-
 app.use(bodyParser.urlencoded({ extended: true }));
- 
 app.use(express.static('public'));
 
 // MongoDB Configuration
- const mongoUrl = `mongodb+srv://alfred:ipp3qfOhGJ5xaPdF@cluster0.2f8ph.mongodb.net/users?retryWrites=true&w=majority&appName=Cluster0`;
-mongoose.connect(mongoUrl)   // REVISAR LA CONEXION A LA DB
-  .then(() => console.log('Conexion establecida con la base de datos'))
-  .catch(err => console.log('Error connecting to MongoDB', err)); 
+ const mongoDBUrl1 = `mongodb+srv://alfred:ipp3qfOhGJ5xaPdF@cluster0.2f8ph.mongodb.net/users?retryWrites=true&w=majority&appName=Cluster0`;
+ const mongoDBUrl2 = `mongodb+srv://alfred:ipp3qfOhGJ5xaPdF@cluster0.2f8ph.mongodb.net/real_estate?retryWrites=true&w=majority&appName=Cluster0`;
 
- /*
+
+/* mongoose.connect(mongoDBUrl1)   // REVISAR LA CONEXION A LA DB
+  .then(() => console.log('Conexion establecida con la base de datos users'))
+  .catch(err => console.log('Error connecting to MongoDB', err)); 
+*/
+  
+mongoose.connect(mongoDBUrl2)   // REVISAR LA CONEXION A LA DB
+.then(() => console.log('Conexion establecida con la base de datos real_estate'))
+.catch(err => console.log('Error connecting to MongoDB', err)); 
+
+
+ 
 
 app.get('/catalog', (req, res) => {
   HouseModel.find()
   .then(houses => res.json(houses))
   .catch(err => res.json(err))
 })
-
+/*
 
 // API Endpoint for Search
 app.get('/api/search', (req, res) => {

@@ -12,4 +12,4 @@ const HouseSchema = new mongoose.Schema({
   });
   const HouseModel = mongoose.model('houses', HouseSchema);
 
-  module.exports = HouseModel;
+  module.exports = HouseModel;  
