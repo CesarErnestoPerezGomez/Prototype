@@ -55,9 +55,12 @@ function Login(){
      <button type = "submit" className = "btn btn-success w-100 rounded-0">
         Login
      </button>  
-     <p> Already have an account</p>
+     <p className= "my-1"> Create new account</p>
      <Link to= "/register" className = "btn btn-default border w-100 bg-light rounded-0 text-decoration-none">
-        Register
+     Register
+     </Link>
+     <Link to= "/home" className = "btn btn-default border w-100 bg-light rounded-0 text-decoration-none my-1">
+        Continue as guest
      </Link>
      </form>
    </div>

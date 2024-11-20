@@ -21,7 +21,7 @@ function Navbar() {
         </ul>
 
         {/* Logo in the Center */}
-        <Link className="navbar-brand mx-auto" to="/">
+        <Link className="navbar-brand mx-auto" to="/home">
           <img src="/pics/Black White Simple House Logo.svg" alt="Logo" style={{ width: "100px" }} />
         </Link>
 
@@ -31,7 +31,7 @@ function Navbar() {
             <Link className="nav-link" to="/services">Services</Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/">Help</a>
+            <a className="nav-link" href="/help">Help</a>
           </li>
         </ul>
       </div>

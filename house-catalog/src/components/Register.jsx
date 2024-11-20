@@ -65,9 +65,12 @@ function Register() {
      <button type = "submit" className = "btn btn-success w-100 rounded-0">
         Register
      </button>  
-     <p> Already have an account</p>
+     <p className= "my-1"> Already have an account?</p>
      <Link to= "/login" className = "btn btn-default border w-100 bg-light rounded-0 text-decoration-none">
         Log In
+     </Link>
+     <Link to= "/home" className = "btn btn-default border w-100 bg-light rounded-0 text-decoration-none my-1">
+        Continue as guest
      </Link>
      </form>
    </div>
