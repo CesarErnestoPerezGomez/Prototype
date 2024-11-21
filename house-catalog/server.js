@@ -9,29 +9,37 @@ app.use(cors());
 app.use(express.json());  // Parse JSON data
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
+require('dotenv').config();
+
 
 // MongoDB Configuration
- const mongoDBUrl1 = `mongodb+srv://alfred:ipp3qfOhGJ5xaPdF@cluster0.2f8ph.mongodb.net/users?retryWrites=true&w=majority&appName=Cluster0`;
- const mongoDBUrl2 = `mongodb+srv://alfred:ipp3qfOhGJ5xaPdF@cluster0.2f8ph.mongodb.net/real_estate?retryWrites=true&w=majority&appName=Cluster0`;
+ const mongoDBUrl1 = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.2f8ph.mongodb.net/${process.env.DB}?retryWrites=true&w=majority&appName=Cluster0`;
 
-
-/* mongoose.connect(mongoDBUrl1)   // REVISAR LA CONEXION A LA DB
-  .then(() => console.log('Conexion establecida con la base de datos users'))
+ mongoose.connect(mongoDBUrl1)   // REVISAR LA CONEXION A LA DB
+  .then(() => console.log('Conexion establecida con la base de datos de Atlas'))
   .catch(err => console.log('Error connecting to MongoDB', err)); 
-*/
-  
-mongoose.connect(mongoDBUrl2)   // REVISAR LA CONEXION A LA DB
-.then(() => console.log('Conexion establecida con la base de datos real_estate'))
-.catch(err => console.log('Error connecting to MongoDB', err)); 
 
 
- 
 
 app.get('/catalog', (req, res) => {
   HouseModel.find()
   .then(houses => res.json(houses))
   .catch(err => res.json(err))
 })
+
+app.get('/houses/:zipCode', async (req, res) => {
+  try {
+    const house = await HouseModel.findOne({ zipCode: req.params.zipCode }); // Uso correcto de findOne
+    if (!house) {
+      return res.status(404).json({ message: "Casa no encontrada" });
+    }
+    res.json(house);
+  } catch (err) {
+    console.error("Error al buscar la casa:", err);
+    res.status(500).json({ message: "Error interno del servidor" });
+  }
+});
+
 /*
 
 // API Endpoint for Search
@@ -163,3 +171,4 @@ app.post('/register', (req, res)=>{
 app.listen(3001, () => {
   console.log('Server running on port 3001');
 });
+

@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar'; // Assuming you’ll create a Navbar 
 import Footer2 from '../components/Footer2'; // Assuming you’ll create a Footer2 component
  import { useEffect, useState } from 'react';
  import axios from 'axios';
+ import { Link } from 'react-router-dom';
 
  function Catalog() {
   const [houses, setHouses] = useState([])
@@ -19,13 +20,18 @@ import Footer2 from '../components/Footer2'; // Assuming you’ll create a Foote
   return (
       <>
     <Navbar/>
-
+   
+    <header class="text-center mt-5">
+        <h1>House Catalog</h1>
+        <p>Here are the available houses</p>
+    </header>
+    
     <div>
      
       <section className="catalog container mt-4">
         <div className="row">
           {houses.map((house) => (
-            <div key={house.zipCode} className="col-md-4 col-sm-6 mb-4 d-flex justify-content-center">
+            <div key={house._id} className="col-md-4 col-sm-6 mb-4 d-flex justify-content-center">
               <div className="card shadow-sm h-100" style={{ width: '100%' }}>
                 <div className="house-image">
                   <img
@@ -45,9 +51,9 @@ import Footer2 from '../components/Footer2'; // Assuming you’ll create a Foote
                   <p className="card-text">
                     <strong>Price:</strong> ${house.price.toLocaleString()}
                   </p>
-                  <a href={`/house/${house.zipCode}`} className="btn btn-outline-secondary mt-auto">
-                    Ver Detalles
-                  </a>
+                  <Link to={`/houses/${house.zipCode}`} className="btn btn-primary">
+                Ver detalles
+                  </Link>
 
                   {/* Botones de Save y Share */}
                   <div className="d-flex justify-content-between mt-2">
@@ -71,7 +77,11 @@ import Footer2 from '../components/Footer2'; // Assuming you’ll create a Foote
   
     <Footer2 />
     </>
+
+    
   );
+
+  
 }
 
 export default Catalog;

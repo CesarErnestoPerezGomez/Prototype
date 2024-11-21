@@ -3,17 +3,32 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/styleCatalog.css'; // Adjust the path as needed
 import Navbar from '../components/Navbar'; // Assuming Navbar component is created
 import Footer2 from '../components/Footer2'; // Assuming Footer2 component is created
+import { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
-function Page3({ house }) {
+function HouseDetails() {
+  const { zipCode } = useParams(); // Captura el ID de la URL
+  const [house, setHouse] = useState(null);
+
+  useEffect(() => {
+    axios.get(`http://localhost:3001/houses/${zipCode}`)
+      .then((response) => setHouse(response.data))
+      .catch((err) => console.log(err));
+  }, [zipCode]);
+
+  if (!house) {
+    return <div>Cargando...</div>;
+  }
+
   return (
     <>
       <Navbar />
-
       <div className="container my-5">
         <div className="row">
           <div className="col-md-8">
             <div className="card">
-              <img src={house.imageurl} className="card-img-top" alt={`Imagen de ${house.name}`} />
+              <img src={house.imageUrl} className="card-img-top" alt={`Imagen de ${house.name}`} />
               <div className="card-body">
                 <h2 className="card-title">{house.name}</h2>
                 <p className="card-text">
@@ -67,10 +82,9 @@ function Page3({ house }) {
           </a>
         </div>
       </div>
-
       <Footer2 />
     </>
   );
-}
+};
 
-export default Page3;
+export default HouseDetails;

@@ -9,6 +9,7 @@ import Register from './components/Register';
  import Page4 from './components/page4';
  import Sell from './components/sell';
  import Catalog from './components/catalog';
+ import HouseDetails from './components/page3';
  /*
 
 import Login from './components/login';
@@ -21,16 +22,6 @@ import Footer2 from './components/Footer2';  */
 
 
 function App() {
- 
- 
- /*  const [houses, setHouses] = useState([])
-  useEffect(()=> {
-    axios.get('http://localhost:3001/catalog')
-    .then(houses => setHouses(houses.data))
-    .catch(err => console.log("nada nadita") )
-  }, [])
-
-*/
 
 
   return (
@@ -45,19 +36,12 @@ function App() {
      <Route path="/services" element={<Page4 />} />
      <Route path="/sell" element={<Sell />} />
      <Route path="/catalog" element={<Catalog/>} />
+     <Route path="//houses/:zipCode" element={<HouseDetails />} />
    </Routes>
  </BrowserRouter>
   
   
-    /*  houses.map( houses => {
-      <tr>
-        <td>{houses.address}</td>
-        <td>{houses.zipCode}</td>
-        <td>{houses.price}</td>
-      </tr>
-    })
-
-*/
+    
 
     /*
    <Router>

@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Navbar() {
   return (
+<>
+    
     <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
       <div className="container">
         {/* Left Menu Items */}
@@ -36,6 +38,7 @@ function Navbar() {
         </ul>
       </div>
     </nav>
+    </>
   );
 }
 
