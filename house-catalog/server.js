@@ -29,7 +29,7 @@ app.get('/catalog', (req, res) => {
 
 app.get('/houses/:zipCode', async (req, res) => {
   try {
-    const house = await HouseModel.findOne({ zipCode: req.params.zipCode }); // Uso correcto de findOne
+    const house = await HouseModel.findOne({ zipCode: req.params.zipCode }); 
     if (!house) {
       return res.status(404).json({ message: "Casa no encontrada" });
     }
@@ -40,107 +40,6 @@ app.get('/houses/:zipCode', async (req, res) => {
   }
 });
 
-/*
-
-// API Endpoint for Search
-app.get('/api/search', (req, res) => {
-  const address = req.query.address;
-  // Example data (in a real app, fetch from MongoDB)
-  const Houses = [
-    {
-      city: "Zapopan",
-      zipCode: "43221",
-      price: 245000,
-      name: "Modern Villa",
-      imageurl: "/pics/casa5.jpeg",
-    },
-    {
-      city: "Tlaquepaque",
-      zipCode: "43243",
-      price: 450500,
-      name: "Cozy Cottage",
-      imageurl: "/pics/casa4.jpeg",
-    },
-    {
-      city: "Tonala",
-      zipCode: "43256",
-      price: 434000,
-      name: "Urban Apartment",
-      imageurl: "/pics/casa3.jpeg",
-    }
-  ];
-
-  const filteredHouses = Houses.filter(house =>
-    house.city.toLowerCase().includes(address.toLowerCase()) ||
-    house.zipCode.includes(address) ||
-    house.name.toLowerCase().includes(address.toLowerCase())
-  );
-
-  res.json(filteredHouses.length > 0 ? filteredHouses : { message: 'No houses found' });
-});
-
-// API Endpoint for Catalog
-app.get('/api/catalog', (req, res) => {
-  const Houses = [
-    {
-      city: "Zapopan",
-      zipCode: "43221",
-      price: 245000,
-      name: "Modern Villa",
-      imageurl: "/pics/casa5.jpeg",
-    },
-    {
-      city: "Tlaquepaque",
-      zipCode: "43243",
-      price: 450500,
-      name: "Cozy Cottage",
-      imageurl: "/pics/casa4.jpeg",
-    },
-    {
-      city: "Tonala",
-      zipCode: "43256",
-      price: 434000,
-      name: "Urban Apartment",
-      imageurl: "/pics/casa3.jpeg",
-    }
-  ];
-  res.json(Houses);
-});
-
-// API Endpoint for House Details
-app.get('/api/house/:zipCode', (req, res) => {
-  const zipCode = req.params.zipCode;
-  const Houses = [
-    {
-      city: "Zapopan",
-      zipCode: "43221",
-      price: 245000,
-      name: "Modern Villa",
-      imageurl: "/pics/casa5.jpeg",
-    },
-    {
-      city: "Tlaquepaque",
-      zipCode: "43243",
-      price: 450500,
-      name: "Cozy Cottage",
-      imageurl: "/pics/casa4.jpeg",
-    },
-    {
-      city: "Tonala",
-      zipCode: "43256",
-      price: 434000,
-      name: "Urban Apartment",
-      imageurl: "/pics/casa3.jpeg",
-    }
-  ];
-
-  const house = Houses.find(h => h.zipCode === zipCode);
-  if (house) {
-    res.json(house);
-  } else {
-    res.status(404).json({ error: 'House not found' });
-  }
-});*/
 
 app.post("/login", (req, res) => {
  const {email, password} = req.body;
