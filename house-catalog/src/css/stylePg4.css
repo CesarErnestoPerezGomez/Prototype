@@ -135,3 +135,12 @@ body {
 .footer p {
     color: #666;
 }
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .service {
+      padding: 10px;
+    }
+    .image-placeholder {
+      height: 150px;
+    }
+  }
