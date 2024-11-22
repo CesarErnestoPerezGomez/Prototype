@@ -132,3 +132,14 @@
     margin: 0 10px; /* Espaciado horizontal entre las tarjetas */
     padding: 10px;
 }
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .header h1 {
+      font-size: 20px;
+    }
+    .catalog {
+      gap: 10px;
+      padding: 5px;
+    }
+  }
