@@ -77,3 +77,12 @@
 .image3 {
     height: 220px; 
 }
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .house-name {
+      font-size: 18px;
+    }
+    .house-description {
+      font-size: 14px;
+    }
+  }
