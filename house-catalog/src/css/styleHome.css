@@ -176,3 +176,13 @@ body {
     padding: 0 15px;
   }
 }
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .header {
+    height: 40vh;
+  }
+  .carousel-item img {
+    height: 200px;
+  }
+}
