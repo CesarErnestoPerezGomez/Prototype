@@ -18,6 +18,7 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
+<<<<<<< HEAD
     "scripts": {
       "start": "react-scripts start",
       "server": "node server.js",
@@ -27,6 +28,16 @@
       "eject": "react-scripts eject"
     },
 
+=======
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+  "server": "node server.js",
+  "client": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+>>>>>>> 9df13f817f7f8b0f90e7ffb9169d4d7741ba8bbd
   "eslintConfig": {
     "extends": [
       "react-app",
