@@ -6,10 +6,11 @@ import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-rou
 import Login from './components/Login';
 import Register from './components/Register';
  import Home from './components/home';
- import Page4 from './components/page4';
+ import Services from './components/page4';
  import Sell from './components/sell';
  import Catalog from './components/catalog';
  import HouseDetails from './components/page3';
+ import SearchResults from './components/searchResults';
  /*
 
 import Login from './components/login';
@@ -33,10 +34,11 @@ function App() {
      <Route path = '/login' element = {<Login/>}> </Route>
      <Route path = '/home' element = {<Home/>}> </Route>
      <Route path = '/' element = {<Login/>}> </Route>
-     <Route path="/services" element={<Page4 />} />
+     <Route path="/services" element={<Services />} />
      <Route path="/sell" element={<Sell />} />
      <Route path="/catalog" element={<Catalog/>} />
      <Route path="//houses/:zipCode" element={<HouseDetails />} />
+     <Route path="/searchResults" element={<SearchResults />} />  
    </Routes>
  </BrowserRouter>
   

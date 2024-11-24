@@ -40,6 +40,28 @@ app.get('/houses/:zipCode', async (req, res) => {
   }
 });
 
+app.get('/search', async (req, res) => {
+  const { address } = req.query;
+
+  try {
+    // Realiza la búsqueda en la base de datos
+    const houses = await HouseModel.find({
+      $or: [
+        { city: new RegExp(address, 'i') }, // Búsqueda insensible a mayúsculas/minúsculas
+        { zipCode: address }, // Busca por código postal exacto
+      ],
+    });
+
+    if (houses.length > 0) {
+      res.status(200).json(houses); // Devuelve las casas encontradas
+    } else {
+      res.status(404).json({ message: 'No houses found.' }); // Error 404 si no encuentra resultados
+    }
+  } catch (error) {
+    res.status(500).json({ message: 'Error searching for houses', error }); // Error del servidor
+  }
+});
+  
 
 app.post("/login", (req, res) => {
  const {email, password} = req.body;
