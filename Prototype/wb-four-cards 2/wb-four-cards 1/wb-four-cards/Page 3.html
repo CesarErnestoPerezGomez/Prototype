@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Details</title>
+    <link rel="stylesheet" href="house.css">
+    <script>
+        function loadHouseDetails() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const house = urlParams.get('house');
+            
+            const houseData = {
+                "modern-villa": {
+                    name: "Modern Villa",
+                    description: "A luxurious modern villa with all amenities.",
+                    images: ["Insert image of the modern villa"]
+                },
+                "cozy-cottage": {
+                    name: "Cozy Cottage",
+                    description: "A quiet and cozy cottage, perfect for families.",
+                    images: ["Insert image of the cozy cottage"]
+                },
+                "urban-apartment": {
+                    name: "Urban Apartment",
+                    description: "A centrally located urban apartment, great for city living.",
+                    images: ["Insert image of the urban apartment"]
+                },
+                "beachfront-property": {
+                    name: "Beachfront Property",
+                    description: "A stunning beachfront property with amazing views.",
+                    images: ["Insert image of the beachfront property"]
+                },
+                "mountain-retreat": {
+                    name: "Mountain Retreat",
+                    description: "A peaceful mountain retreat, perfect for relaxation.",
+                    images: ["Insert image of the mountain retreat"]
+                }
+            };
+
+            if (houseData[house]) {
+                document.getElementById('house-name').textContent = houseData[house].name;
+                document.getElementById('house-description').textContent = houseData[house].description;
+                document.getElementById('house-image').textContent = houseData[house].images[0];
+            } else {
+                document.getElementById('house-name').textContent = "House not found";
+                document.getElementById('house-description').textContent = "The description of the selected house could not be found.";
+                document.getElementById('house-image').textContent = "No image available.";
+            }
+        }
+
+        window.onload = loadHouseDetails;
+    </script>
+</head>
+<body>
+    <header class="header">
+        <h1 id="house-name">Loading...</h1>
+    </header>
+
+    <section class="house-details">
+        <div class="house-image" id="house-image">
+            Loading image...
+        </div>
+        <p id="house-description">Loading description...</p>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 House Search</p>
+    </footer>
+</body>
+</html>
