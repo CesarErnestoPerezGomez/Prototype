@@ -4,6 +4,7 @@ const cors = require('cors');
 const userModel = require('./src/models/users')
 const bodyParser = require('body-parser');
 const HouseModel  = require('./src/models/houses')
+const ContactModel  = require('./src/models/forms')
 const app = express();
 app.use(cors());
 app.use(express.json());  // Parse JSON data
@@ -55,7 +56,7 @@ app.get('/search', async (req, res) => {
     if (houses.length > 0) {
       res.status(200).json(houses); // Devuelve las casas encontradas
     } else {
-      res.status(404).json({ message: 'No houses found.' }); // Error 404 si no encuentra resultados
+      res.status(404).json({ message: 'No houses found' }); // Error 404 si no encuentra resultados
     }
   } catch (error) {
     res.status(500).json({ message: 'Error searching for houses', error }); // Error del servidor
@@ -87,6 +88,11 @@ app.post('/register', (req, res)=>{
     .catch(err => res.json(err))  
 })
 
+app.post('/contacts', (req, res)=>{
+  ContactModel.create(req.body)
+  .then(contacts => res.json(contacts))
+  .catch(err => res.json(err))  
+})
 
 // Start the server
 app.listen(3001, () => {

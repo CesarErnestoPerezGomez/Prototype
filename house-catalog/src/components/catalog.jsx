@@ -21,9 +21,9 @@ import Footer2 from '../components/Footer2'; // Assuming you’ll create a Foote
       <>
     <Navbar/>
    
-    <header class="text-center mt-5">
-        <h1>House Catalog</h1>
-        <p>Here are the available houses</p>
+    <header className="text-center mt-5">
+        <h1>Catalog</h1>
+        <p> Available houses</p>
     </header>
     
     <div>
@@ -52,7 +52,7 @@ import Footer2 from '../components/Footer2'; // Assuming you’ll create a Foote
                     <strong>Price:</strong> ${house.price.toLocaleString()}
                   </p>
                   <Link to={`/houses/${house.zipCode}`} className="btn btn-primary">
-                Ver detalles
+                View Details
                   </Link>
 
                   {/* Botones de Save y Share */}

@@ -29,7 +29,6 @@ function App() {
    
  <BrowserRouter>
    <Routes>
-    
      <Route path = '/register' element = {<Register/>}> </Route>
      <Route path = '/login' element = {<Login/>}> </Route>
      <Route path = '/home' element = {<Home/>}> </Route>
@@ -37,7 +36,7 @@ function App() {
      <Route path="/services" element={<Services />} />
      <Route path="/sell" element={<Sell />} />
      <Route path="/catalog" element={<Catalog/>} />
-     <Route path="//houses/:zipCode" element={<HouseDetails />} />
+     <Route path="/houses/:zipCode" element={<HouseDetails />} />
      <Route path="/searchResults" element={<SearchResults />} />  
    </Routes>
  </BrowserRouter>
