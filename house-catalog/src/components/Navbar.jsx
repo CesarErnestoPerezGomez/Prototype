@@ -25,7 +25,7 @@ function Navbar() {
 
         {/* Logo in the Center */}
         <Link className="navbar-brand mx-auto" to="/home">
-          <img src="/pics/Black White Simple House Logo.svg" alt="Logo" style={{ width: "100px" }} />
+          <img src="/pics/Black White Simple House Logo.svg" alt="Logo"  />
         </Link>
 
          {/* Right Menu Items */}
@@ -48,9 +48,10 @@ function Navbar() {
           style={{ width: "32px", height: "32px", marginRight: "8px", borderRadius: "50%" }}/>
          </button>
          <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-             <li><Link className="dropdown-item" to="/action1">Action</Link></li>
-             <li><Link className="dropdown-item" to="/action2">Another action</Link></li>
-             <li><Link className="dropdown-item" to="/action3">Another action</Link></li>
+             <li><Link className="dropdown-item" to="/myProfile">My account</Link></li>
+             <li><Link className="dropdown-item" to="/login">Login</Link></li>
+             <li><Link className="dropdown-item" to="/">Saved</Link></li>
+             <li><Link className="dropdown-item" to="/register">New account</Link></li>
            </ul>
          </li>
      </ul>

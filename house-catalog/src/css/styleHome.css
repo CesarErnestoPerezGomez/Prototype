@@ -13,24 +13,6 @@ body {
 }
 
 
-.navbar {
-  padding: 10px 20px;
-  height: 100px;
-
-}
-
-.navbar-nav .nav-link {
-  padding-top: 4px;   /* Replaced 0.5rem with 4px */
-  padding-bottom: 4px;
-}
-
-
-.navbar-brand img {
-  width: 40px;  /* Reduced width from 50px to 40px */
-  height: auto; /* Maintain aspect ratio */
-  /* Removed the transform property */
-}
-
 
 /* Header Styles */
 .header {
