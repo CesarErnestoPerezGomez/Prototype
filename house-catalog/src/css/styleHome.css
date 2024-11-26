@@ -41,6 +41,7 @@ body {
   height: 60vh;
   position: relative;
   color: #ffffff;
+  z-index: 100; 
 }
 
 .header-overlay {

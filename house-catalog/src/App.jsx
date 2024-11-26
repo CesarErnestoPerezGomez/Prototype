@@ -11,6 +11,7 @@ import Register from './components/Register';
  import Catalog from './components/catalog';
  import HouseDetails from './components/page3';
  import SearchResults from './components/searchResults';
+ import Profile from './components/profile';
  /*
 
 import Login from './components/login';
@@ -32,12 +33,14 @@ function App() {
      <Route path = '/register' element = {<Register/>}> </Route>
      <Route path = '/login' element = {<Login/>}> </Route>
      <Route path = '/home' element = {<Home/>}> </Route>
-     <Route path = '/' element = {<Login/>}> </Route>
-     <Route path="/services" element={<Services />} />
-     <Route path="/sell" element={<Sell />} />
-     <Route path="/catalog" element={<Catalog/>} />
-     <Route path="/houses/:zipCode" element={<HouseDetails />} />
-     <Route path="/searchResults" element={<SearchResults />} />  
+     <Route path = '/' element = {<Home/>}> </Route>
+     <Route path='/services' element={<Services />} />
+     <Route path='/sell' element={<Sell />} />
+     <Route path='/catalog' element={<Catalog/>} />
+     <Route path='/houses/:zipCode' element={<HouseDetails />} />
+     <Route path='/searchResults' element={<SearchResults />} /> 
+     <Route path='/myProfile' element={<Profile/>} /> 
+
    </Routes>
  </BrowserRouter>
   

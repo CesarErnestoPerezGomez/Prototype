@@ -48,8 +48,8 @@ function Home() {
             <p className="card-text">We can help you navigate to a successful sale.</p>
             <a href="/sell" className="btn btn-primary">See your options</a>
           </div>
+          </div>
         </div>
-      </div>
       <div className="col-md-4">
         <div className="card mb-4">
           <img src="/pics/Tomei_Bleeker_1.jpg.webp" className="card-img-top" alt="Rent a House" />
