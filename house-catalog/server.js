@@ -24,6 +24,40 @@ const jwt = require('jsonwebtoken');
   .then(() => console.log('Conexion establecida con la base de datos de Atlas'))
   .catch(err => console.log('Error connecting to MongoDB', err)); 
 
+  const authenticateToken = (req, res, next) => {
+    const token = req.cookies.token;
+    if (!token) return res.status(401).json({ error: 'Not authenticated' });
+  
+    jwt.verify(token, 'secret_key', (err, user) => {
+      if (err) return res.status(403).json({ error: 'Invalid token' });
+      req.user = user;
+      next();
+    });
+  };
+
+  app.post('/save-house', authenticateToken, async (req, res) => {
+    const { houseId } = req.body;
+  
+    try {
+      const house = await HouseModel.findById(houseId);
+      if (!house) return res.status(404).json({ error: 'House not found' });
+  
+      const user = await userModel.findById(req.user.id);
+      if (!user) return res.status(404).json({ error: 'User not found' });
+  
+      if (user.savedHouses.includes(houseId)) {
+        return res.status(400).json({ error: 'House already saved' });
+      }
+  
+      user.savedHouses.push(houseId);
+      await user.save();
+  
+      res.status(200).json({ message: 'House saved successfully', savedHouses: user.savedHouses });
+    } catch (error) {
+      res.status(500).json({ error: 'Error saving house', details: error });
+    }
+  });
+  
 
 
 app.get('/catalog', (req, res) => {
@@ -116,14 +150,18 @@ app.post('/contacts', (req, res)=>{
 })
 
 app.get('/profile', async (req, res) => {
+  
   const token = req.cookies.token;
   if (!token) return res.status(401).json({ error: 'Not authenticated' });
 
   try {
     const verified = jwt.verify(token, 'secret_key');
-    const user = await userModel.findById(verified.id);
-    res.json({ user });
+    const user = await userModel.findById(verified.id).populate('savedHouses');;
+    if (!user) return res.status(404).json({ error: 'User not found' });
+
+    res.json({ user, savedHouses: user.savedHouses });
   } catch (error) {
+    
     res.status(401).json({ error: 'Invalid token' });
   }
 });
