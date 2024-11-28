@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const HouseModel  = require('./src/models/houses')
 const ContactModel  = require('./src/models/forms')
 const app = express();
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 app.use(express.json());  // Parse JSON data
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
@@ -66,35 +66,46 @@ app.get('/search', async (req, res) => {
 });
   
 
-app.post("/login", (req, res) => {
- const {email, password} = req.body;
- userModel.findOne({email: email})
- .then(user => {
-  if(user) {
-    if (user.password === password){
-      res.json("Success")
-    } else {
-      res.json("the password is incorrect")
-      }
-     } else {
-      res.json("No record existed")
-     }
-   })
-})
+app.post('/login', async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await userModel.findOne({ email });
+    if (!user) return res.status(400).json({ message: 'Usuario no encontrado' });
+
+    const match = await bcrypt.compare(password, user.password);
+    if (!match) return res.status(400).json({ message: 'Contraseña incorrecta' });
+
+    req.session.user = user;
+    res.json({ message: 'Inicio de sesión exitoso', user });
+  } catch (err) {
+    res.status(500).json({ message: 'Error al iniciar sesión' });
+  }
+});
 
 
 
-app.post('/register', (req, res)=>{
-    userModel.create(req.body)
-    .then(users => res.json(users))
-    .catch(err => res.json(err))  
-})
+app.post('/register', async (req, res) => {
+  const { name, email, password } = req.body;
+  try {
+    const existingUser = await userModel.findOne({ email });
+    if (existingUser) return res.status(400).json({ message: 'El correo ya está registrado' });
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new userModel({ name, email, password: hashedPassword });
+    await newUser.save();
+    res.status(201).json({ message: 'Usuario registrado exitosamente' });
+  } catch (err) {
+    res.status(500).json({ message: 'Error al registrar usuario' });
+  }
+});
+
 
 app.post('/contacts', (req, res)=>{
   ContactModel.create(req.body)
   .then(contacts => res.json(contacts))
   .catch(err => res.json(err))  
 })
+
 
 // Start the server
 app.listen(3001, () => {
