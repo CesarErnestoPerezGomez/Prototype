@@ -6,6 +6,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '../css/styleCatalog.css';
 import '../css/styleNavbar.css';
 import { Navbar, Container, Nav, Dropdown } from 'react-bootstrap';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 function Navibar() {
   return (
