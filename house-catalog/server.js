@@ -11,9 +11,11 @@ app.use(express.json());  // Parse JSON data
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 require('dotenv').config();
-    
-
-
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 // MongoDB Configuration
  const mongoDBUrl1 = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.2f8ph.mongodb.net/${process.env.DB}?retryWrites=true&w=majority&appName=Cluster0`;
@@ -82,37 +84,30 @@ app.get('/search', async (req, res) => {
 
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
-  try {
-    const user = await userModel.findOne({ email });
-    if (!user) return res.status(400).json({ message: 'Usuario no encontrado' });
+  const user = await userModel.findOne({ email });
+  if (!user) return res.status(400).json({ error: 'User not found' });
 
-    const match = await bcrypt.compare(password, user.password);
-    if (!match) return res.status(400).json({ message: 'Contraseña incorrecta' });
+  const isPasswordValid = await bcrypt.compare(password, user.password);
+  if (!isPasswordValid) return res.status(400).json({ error: 'Invalid password' });
 
-    req.session.user = user;
-    res.json({ message: 'Inicio de sesión exitoso', user });
-  } catch (err) {
-    res.status(500).json({ message: 'Error al iniciar sesión' });
-  }
+  const token = jwt.sign({ id: user._id }, 'secret_key');
+  res.cookie('token', token, { httpOnly: true });
+  res.json({ message: 'Logged in successfully' });
 });
+
 
 
 
 app.post('/register', async (req, res) => {
   const { name, email, password } = req.body;
+  const hashedPassword = await bcrypt.hash(password, 10);
   try {
-    const existingUser = await userModel.findOne({ email });
-    if (existingUser) return res.status(400).json({ message: 'El correo ya está registrado' });
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new userModel({ name, email, password: hashedPassword });
-    await newUser.save();
-    res.status(201).json({ message: 'Usuario registrado exitosamente' });
-  } catch (err) {
-    res.status(500).json({ message: 'Error al registrar usuario' });
+    const user = await userModel.create({ name, email, password: hashedPassword });
+    res.json({ message: 'User registered successfully' });
+  } catch (error) {
+    res.status(400).json({ error: 'Email already exists' });
   }
 });
-
 
 app.post('/contacts', (req, res)=>{
   ContactModel.create(req.body)
@@ -120,6 +115,25 @@ app.post('/contacts', (req, res)=>{
   .catch(err => res.json(err))  
 })
 
+app.get('/profile', async (req, res) => {
+  const token = req.cookies.token;
+  if (!token) return res.status(401).json({ error: 'Not authenticated' }
+  );
+  
+
+  try {
+    const verified = jwt.verify(token, 'secret_key');
+    const user = await userModel.findById(verified.id);
+    res.json({ user });
+  } catch (error) {
+    res.status(401).json({ error: 'Invalid token' });
+  }
+});
+
+app.post('/logout', (req, res) => {
+  res.cookie('token', '', { httpOnly: true, expires: new Date(0) });
+  res.json({ message: 'Logged out successfully' });
+});
 
 // Start the server
 app.listen(3001, () => {

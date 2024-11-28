@@ -1,54 +1,59 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Navibar from '../components/Navbar'; 
-import Footer2 from '../components/Footer2';
-import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Navibar from '../components/Navbar';
+import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 
-function Profile(){
-  const [user, setUser] = useState(null); // Estado para almacenar los datos del usuario
+const Profile = () => {
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
-
-  // Simula la carga de datos del usuario (ajusta según tu lógica de autenticación)
   useEffect(() => {
-    axios.get('http://localhost:3001/profile') // EndPoint para obtener los datos del perfil
-      .then((response) => setUser(response.data)) // Guardar los datos del usuario en el estado
-      .catch((err) => console.log(err));
+    const fetchProfile = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/profile', { withCredentials: true });
+        setUser(response.data.user);
+      } catch (error) {
+        alert(error.response.data.error);
+      }
+    };
+    fetchProfile();
   }, []);
 
-  if (!user) {
-    return <div>Cargando perfil...</div>; // Mostrar un mensaje mientras se cargan los datos
-  }
+  if (!user) return <div>Loading...</div>;
 
-  const handleViewSavedHouses = () => {
-    navigate('/saved-houses'); // Redirige a la página de casas guardadas
+  const handleLogout = async () => {
+    try {
+      await axios.post('http://localhost:3001/logout', {}, { withCredentials: true });
+      navigate('/login');  // Redirigir al login después de hacer logout
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
+
   };
-  
-  
+
   return (
- <>
-   <Navibar/>
-   <div className="container my-5">
-        <h2 className="text-center">Mi Perfil</h2>
-        <div className="card mx-auto" style={{ maxWidth: '400px' }}>
-          <div className="card-body text-center">
-            <h3>{user.name}</h3>
-            <p>{user.email}</p>
-            <button
-              className="btn btn-primary w-100"
-              onClick={handleViewSavedHouses}
-            >
-              Ver Casas Guardadas
-            </button>
-          </div>
-        </div>
-      </div>
-
-   <Footer2 />
- </>
-
-    );
-}
+    <> <Navibar/>
+    
+    <Container className="my-5">
+        <Row className="justify-content-center">
+          <Col xs={12} md={8} lg={6}>
+            <Card>
+              <Card.Body>
+                <Card.Title>Welcome, {user.name}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">Email: {user.email}</Card.Subtitle>
+                <Button variant="primary"  className="mt-3 w-100">
+                  View Saved Houses
+                </Button>
+                <Button variant="danger" onClick={handleLogout} className="mt-3 w-100">
+                  Logout
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+    </>
+  );
+};
 
 export default Profile;

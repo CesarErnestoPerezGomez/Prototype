@@ -1,77 +1,67 @@
-import React from 'react';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
 import axios from 'axios';
-//import { useNavigate } from 'react-router-dom';
-import '../css/styleLogin.css'; 
-import Navibar from '../components/Navbar'; // Assuming Navbar component is created
+import { Link } from 'react-router-dom';
+import Navibar from '../components/Navbar';
+import { useNavigate } from 'react-router-dom';
 
-
-const Login = ({ onLogin }) => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const handleSubmit = async (e) => {
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+  const navigate = useNavigate();
+  const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:3001/login', { email, password }, { withCredentials: true });
-      onLogin(response.data.user); // Actualiza el estado de sesión en el padre
-    } catch (err) {
-      alert('Error al iniciar sesión');
+      alert(response.data.message);
+      navigate('/home'); 
+    } catch (error) {
+      alert(error.response.data.error);
     }
   };
-    return (
-<>
-      <Navibar />
 
-      <div className="d-flex justify-content-center align-items-center bg-secondary vh-100 ">
-      <div className="bg-white p-3 rounded w-25">
-      <h2>LogIn</h2>
-      <form onSubmit={handleSubmit}>
-       <div className="mb-3">
-         <label htmlFor="email">
-            <strong> Email </strong>
-          </label>
-         <input
-            type="email"
-            placeholder="Enter Email"
-            name="email"
-            value={email}
-           className="form-control rounded-0"
-           onChange={(e) => setEmail(e.target.value)}
-           required
-         />
-       </div>
-   <div className="mb-3">
-       <label htmlFor="email">
-           <strong>Password</strong>
-       </label>
-     <input
-        type="password"
-        placeholder="Enter Password"
-        name="password"
-        value={password}
-       className="form-control rounded-0"
-       onChange={(e) => setPassword(e.target.value)}
-       required
-      />
-   </div>
-     <button type = "submit" className = "btn btn-personal w-100 rounded-0">
-        Login
-     </button>  
-     <p className= "my-1"> Create new account</p>
-     <Link to= "/register" className = "btn btn-default border w-100 bg-light rounded-0 text-decoration-none">
-     Register
-     </Link>
-     <Link to= "/home" className = "btn btn-default border w-100 bg-light rounded-0 text-decoration-none my-1">
-        Continue as guest
-     </Link>
-     </form>
-   </div>
- </div>
-  </>  )
+  return (
+    <><Navibar/>
+    <Container className="mt-5">
+      <Row className="justify-content-center">
+        <Col xs={12} sm={8} md={6} lg={4}>
+          <h3 className="text-center mb-4">Login</h3>
+          {error && <Alert variant="danger">{error}</Alert>}
+          {success && <Alert variant="success">{success}</Alert>}
+          <Form onSubmit={handleLogin}>
+            <Form.Group className="mb-3" controlId="formEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Form.Group>
 
-}
+            <Form.Group className="mb-3" controlId="formPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
 
+            <Button variant="primary" type="submit" className="w-100">
+              Login
+            </Button>
+            <Link to= "/register" variant="primary" type="submit" className="w-100">
+              Register
+            </Link>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
+  </>);
+};
 
 export default Login;
