@@ -7,6 +7,7 @@ import { Container, Row, Col, Button, Card } from 'react-bootstrap';
 const Profile = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  
   useEffect(() => {
     const fetchProfile = async () => {
       try {

@@ -12,7 +12,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 function Navibar() {
   return (
     <>
-      <Navbar expand="lg" bg="white" className="shadow container-padre">
+            <Navbar expand="lg" bg="white" className="shadow container-padre">
         <Container className="custom-container">
           {/* Dropdown Menu */}
           <Dropdown>

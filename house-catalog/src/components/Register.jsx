@@ -32,10 +32,10 @@ const Register = () => {
           {success && <Alert variant="success">{success}</Alert>}
           <Form onSubmit={handleRegister}>
             <Form.Group className="mb-3" controlId="formName">
-              <Form.Label>Name</Form.Label>
+              <Form.Label>Username</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter your name"
+                placeholder="Enter a username"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
