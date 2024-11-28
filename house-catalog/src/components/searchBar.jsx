@@ -44,7 +44,7 @@ function SearchBar(){
             />
             <div className="input-group-append">
               <button type="submit" className="btn btn-secondary" id="search-button">
-                <i className="fa fa-search" aria-hidden="true"></i>
+              <i className="fas fa-search" aria-hidden="true"></i>
               </button>
             </div>
           </form>
