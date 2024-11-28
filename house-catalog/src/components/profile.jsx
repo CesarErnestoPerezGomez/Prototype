@@ -14,6 +14,7 @@ const Profile = () => {
         setUser(response.data.user);
       } catch (error) {
         alert(error.response.data.error);
+        navigate('/login'); 
       }
     };
     fetchProfile();
@@ -31,6 +32,7 @@ const Profile = () => {
 
   };
 
+  
   return (
     <> <Navibar/>
     
@@ -41,7 +43,7 @@ const Profile = () => {
               <Card.Body>
                 <Card.Title>Welcome, {user.name}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">Email: {user.email}</Card.Subtitle>
-                <Button variant="primary"  className="mt-3 w-100">
+                <Button variant="primary"  className="mt-3 w-100" >
                   View Saved Houses
                 </Button>
                 <Button variant="danger" onClick={handleLogout} className="mt-3 w-100">

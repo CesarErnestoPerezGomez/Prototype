@@ -35,7 +35,7 @@ function Home() {
           <div className="card-body">
             <h5 className="card-title">Buy House</h5>
             <p className="card-text">We can help find the house of your dreams.</p>
-            <a href="/catalog" className="btn btn-primary">See homes</a>
+            <a href="/buy-a-house" className="btn btn-primary">See homes</a>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@ function Home() {
           <div className="card-body">
             <h5 className="card-title">Rent a House</h5>
             <p className="card-text">Find the perfect home to rent at the best price.</p>
-            <a href="/catalog" className="btn btn-primary">Find rentals here</a>
+            <a href="/rent-a-house" className="btn btn-primary">Find rentals here</a>
           </div>
         </div>
       </div>

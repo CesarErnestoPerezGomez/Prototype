@@ -57,7 +57,7 @@ import Footer2 from '../components/Footer2'; // Assuming you’ll create a Foote
 
                   {/* Botones de Save y Share */}
                   <div className="d-flex justify-content-between mt-2">
-                    <button className="btn btn-outline-success btn-sm save-btn">
+                    <button className="btn btn-outline-success btn-sm save-btn" >
                       <i className="fas fa-heart"></i> Save
                     </button>
                     <button className="btn btn-outline-secondary btn-sm share-btn">

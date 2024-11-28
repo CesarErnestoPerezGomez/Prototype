@@ -16,6 +16,7 @@ import Register from './components/Register';
  import Buy from './components/buy';
  import Rent from './components/rent';
 
+
  /*
 
 import Login from './components/login';
@@ -47,6 +48,7 @@ function App() {
      <Route path='/searchResults' element={<SearchResults />} /> 
      <Route path='/myProfile' element={<Profile/>} /> 
      <Route path='/help' element={<Help/>} /> 
+    
 
   
 
