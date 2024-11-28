@@ -11,6 +11,8 @@ app.use(express.json());  // Parse JSON data
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 require('dotenv').config();
+    
+
 
 
 // MongoDB Configuration
