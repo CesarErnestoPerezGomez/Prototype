@@ -19,3 +19,7 @@
     border-radius: 50%; /* Hace la imagen circular */
   }
  
+  .imagen-personal img {
+   width: 120px;
+   height: auto;
+  }

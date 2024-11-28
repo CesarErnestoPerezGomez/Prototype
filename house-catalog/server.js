@@ -30,6 +30,20 @@ app.get('/catalog', (req, res) => {
   .catch(err => res.json(err))
 })
 
+app.get('/buy-a-house', (req, res) => {
+  HouseModel.find()
+  .then(houses => res.json(houses))
+  .catch(err => res.json(err))
+})
+
+
+app.get('/rent-a-house', (req, res) => {
+  HouseModel.find()
+  .then(houses => res.json(houses))
+  .catch(err => res.json(err))
+})
+
+
 app.get('/houses/:zipCode', async (req, res) => {
   try {
     const house = await HouseModel.findOne({ zipCode: req.params.zipCode }); 
