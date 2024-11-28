@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import Navbar from '../components/Navbar'; 
+import Navibar from '../components/Navbar'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/styleCatalog.css'; 
 import Footer2 from '../components/Footer2';
@@ -16,7 +16,7 @@ function SearchResults() {
   return (
    <>
    
-   <Navbar/>
+   <Navibar/>
    
    <header className="text-center mt-5">
        <h1> <Link className="nav-link" to="/catalog">Catalog</Link></h1>

@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from '../components/Navbar'; 
+import Navibar from '../components/Navbar'; 
 import Footer2 from '../components/Footer2';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -28,7 +28,7 @@ function Profile(){
   
   return (
  <>
-   <Navbar/>
+   <Navibar/>
    <div className="container my-5">
         <h2 className="text-center">Mi Perfil</h2>
         <div className="card mx-auto" style={{ maxWidth: '400px' }}>

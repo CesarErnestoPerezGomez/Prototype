@@ -1,5 +1,5 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
 // import { useEffect, useState } from 'react'; 
 // import axios from 'axios';
@@ -12,6 +12,7 @@ import Register from './components/Register';
  import HouseDetails from './components/page3';
  import SearchResults from './components/searchResults';
  import Profile from './components/profile';
+
  /*
 
 import Login from './components/login';
@@ -40,6 +41,7 @@ function App() {
      <Route path='/houses/:zipCode' element={<HouseDetails />} />
      <Route path='/searchResults' element={<SearchResults />} /> 
      <Route path='/myProfile' element={<Profile/>} /> 
+  
 
    </Routes>
  </BrowserRouter>

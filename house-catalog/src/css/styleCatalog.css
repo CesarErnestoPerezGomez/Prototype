@@ -108,30 +108,6 @@
 
 
 
-.navbar {
-  padding: 10px 20px;
-  height: 100px;
-  z-index: 1050; 
-}
-
-.dropdown-menu {
-    z-index: 1060;
-    position: absolute; /* Asegúrate de que el menú desplegable esté sobre todo lo demás */
-}
-
-
-.navbar-nav .nav-link {
-  padding-top: 4px;   /* Replaced 0.5rem with 4px */
-  padding-bottom: 4px;
-}
-
-
-.navbar-brand img {
-  width: 80px;  /* Reduced width from 50px to 40px */
-  height: auto; /* Maintain aspect ratio */
-  /* Removed the transform property */
-}
-
 
 .catalog .row {
     justify-content: center;
@@ -141,7 +117,7 @@
     padding: 10px;
 }
 
-/* Mobile Adjustments */
+/* Mobile Adjustments 
 @media (max-width: 768px) {
     .header h1 {
       font-size: 20px;
@@ -151,3 +127,4 @@
       padding: 5px;
     }
   }
+*/

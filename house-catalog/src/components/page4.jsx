@@ -1,13 +1,13 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/stylePg4.css';
-import Navbar from '../components/Navbar'; // Assuming Navbar component is created
+import Navibar from '../components/Navbar'; // Assuming Navbar component is created
 import Footer2 from '../components/Footer2'; // Assuming Footer2 component is created
 
 function Services() {
   return (
     <>
-      <Navbar />
+      <Navibar />
 
       <div className="container">
         <h1>Remodeling Services</h1>

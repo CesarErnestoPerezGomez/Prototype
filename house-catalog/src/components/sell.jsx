@@ -1,12 +1,12 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/styleCatalog.css'; // Adjust the path as needed
-import Navbar from '../components/Navbar'; // Assuming Navbar component is created
+import Navibar from '../components/Navbar'; // Assuming Navbar component is created
 
 function Sell() {
   return (
     <>
-      <Navbar />
+      <Navibar />
 
       <section className="d-flex flex-column justify-content-center align-items-center vh-100">
         <div className="text-center">

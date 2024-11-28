@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/styleHome.css'; // Adjust the path as needed
-import Navbar from '../components/Navbar'; // Assuming Navbar component is created
+import Navibar from '../components/Navbar'; // Assuming Navbar component is created
 import Footer from '../components/Footer'; // Assuming Footer component is created
 import { Carousel } from 'react-bootstrap';
 //import { useNavigate } from 'react-router-dom';
@@ -14,7 +14,7 @@ function Home() {
 
   return (
     <>
-    <Navbar />
+    <Navibar />
 
 {/* Header Section */}
 <header className="header d-flex flex-column justify-content-center align-items-center text-center">

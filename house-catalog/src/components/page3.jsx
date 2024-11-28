@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/styleCatalog.css'; // Adjust the path as needed
-import Navbar from '../components/Navbar'; // Assuming Navbar component is created
+import Navibar from '../components/Navbar'; // Assuming Navbar component is created
 import Footer2 from '../components/Footer2'; // Assuming Footer2 component is created
 import { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
@@ -39,7 +39,7 @@ function HouseDetails() {
 
   return (
     <>
-      <Navbar />
+      <Navibar />
       <div className="container my-5">
         <div className="row">
           <div className="col-md-8">

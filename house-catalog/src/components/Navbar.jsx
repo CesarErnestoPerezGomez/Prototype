@@ -3,62 +3,46 @@ import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import '../css/styleCatalog.css';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import '../css/styleNavbar.css';
 
-function Navbar() {
+function Navibar() {
   return (
 <>
     
-    <nav className="navbar navbar-expand-lg navbar-light bg-white shadow">
-      <div className="container">
+<Navbar expand="lg" bg="white" className="shadow container-padre">
+      <Container className="custom-container">
         {/* Left Menu Items */}
-        <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <Link className="nav-link" to="/catalog">Buy</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/catalog">Rent</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/sell">Sell</Link>
-          </li>
-        </ul>
+        <Nav className="me-auto">
+          <Nav.Link as={Link} to="/catalog">Buy</Nav.Link>
+          <Nav.Link as={Link} to="/catalog">Rent</Nav.Link>
+          <Nav.Link as={Link} to="/sell">Sell</Nav.Link>
+        </Nav>
 
         {/* Logo in the Center */}
-        <Link className="navbar-brand mx-auto" to="/home">
-          <img src="/pics/Black White Simple House Logo.svg" alt="Logo"  />
-        </Link>
+        <Navbar.Brand as={Link} to="/home" className="mx-auto">
+          <img src="/pics/Black White Simple House Logo.svg" alt="Logo" />
+        </Navbar.Brand>
 
-         {/* Right Menu Items */}
-       <ul className="navbar-nav ml-auto">
-         <li className="nav-item">
-           <Link className="nav-link" to="/services">Services</Link>
-         </li>
-         <li className="nav-item">
-            <Link className="nav-link" to="/help">Help</Link>
-         </li>
-         <li className="nav-item dropdown">
-         <button
-           className="nav-link dropdown-toggle btn btn-link"
-           id="navbarDropdown"
-           data-bs-toggle="dropdown"
-         aria-expanded="false">  
-          <img
-          src="/pics/person-circle.svg"
-          alt="Profile"
-          style={{ width: "32px", height: "32px", marginRight: "8px", borderRadius: "50%" }}/>
-         </button>
-         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-             <li><Link className="dropdown-item" to="/myProfile">My account</Link></li>
-             <li><Link className="dropdown-item" to="/login">Login</Link></li>
-             <li><Link className="dropdown-item" to="/">Saved</Link></li>
-             <li><Link className="dropdown-item" to="/register">New account</Link></li>
-           </ul>
-         </li>
-     </ul>
-      </div>
-    </nav>
-    </>
+        {/* Right Menu Items */}
+        <Nav className="ms-auto">
+          <Nav.Link as={Link} to="/services">Services</Nav.Link>
+          <Nav.Link as={Link} to="/help">Help</Nav.Link>
+          <Nav.Link as={Link} to="/login">Login</Nav.Link>
+          <Nav.Link as={Link} to="/myProfile">  <img
+               src="/pics/person-circle.svg"
+               alt="Profile"
+              className="profile-img"
+            /></Nav.Link>
+
+        </Nav>
+      </Container>
+    </Navbar>
+</>
+
   );
 }
 
-export default Navbar;
+export default Navibar;
