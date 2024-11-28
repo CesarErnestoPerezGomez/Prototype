@@ -1,5 +1,49 @@
-.btn-personal{
-    background-color:#8C52FF;
-    color: #ffffff
-}
-
+/* Login Form Container */
+.login-container {
+    min-height: 80vh; /* Ensures full-page height for the container */
+  }
+  
+  /* Login Logo */
+  .login-logo {
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  /* Form Styling */
+  form {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Button Styling */
+  .btn-personal {
+    background-color: #8C52FF;
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-personal:hover {
+    background-color: #6a3ccc;
+    transform: scale(1.05);
+  }
+  
+  /* Link Styling */
+  .btn-link {
+    color: #8C52FF;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .btn-link:hover {
+    color: #6a3ccc;
+    text-decoration: underline;
+  }
+  

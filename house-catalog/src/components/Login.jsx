@@ -3,65 +3,83 @@ import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Navibar from '../components/Navbar';
-import { useNavigate } from 'react-router-dom';
+import CustomFooter from '../components/Footer';
+import '../css/styleLogin.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-  const navigate = useNavigate();
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:3001/login', { email, password }, { withCredentials: true });
       alert(response.data.message);
-      navigate('/home'); 
+      // Navigate to home on success
+      navigate('/home');
     } catch (error) {
       alert(error.response.data.error);
     }
   };
 
   return (
-    <><Navibar/>
-    <Container className="mt-5">
-      <Row className="justify-content-center">
-        <Col xs={12} sm={8} md={6} lg={4}>
-          <h3 className="text-center mb-4">Login</h3>
-          {error && <Alert variant="danger">{error}</Alert>}
-          {success && <Alert variant="success">{success}</Alert>}
-          <Form onSubmit={handleLogin}>
-            <Form.Group className="mb-3" controlId="formEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </Form.Group>
+    <>
+      {/* Navbar */}
+      <Navibar />
 
-            <Form.Group className="mb-3" controlId="formPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+      {/* Login Form Section */}
+      <Container className="login-container mt-5 d-flex justify-content-center align-items-center">
+        <Row>
+          <Col xs={12} md={6}>
+            {/* Logo */}
+            <div className="text-center mb-4">
+              <img
+                src="/pics/Screenshot 2024-11-27 at 10.18.18 p.m..png" // Adjust path to your logo
+                alt="Logo"
+                className="login-logo"
               />
-            </Form.Group>
+            </div>
+            {/* Form */}
+            <h3 className="text-center mb-4">Login to House</h3>
+            {error && <Alert variant="danger">{error}</Alert>}
+            {success && <Alert variant="success">{success}</Alert>}
+            <Form onSubmit={handleLogin} className="p-4 rounded shadow-lg bg-white">
+              <Form.Group className="mb-3" controlId="formEmail">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formPassword">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </Form.Group>
+              <Button type="submit" className="btn-personal w-100 mb-3">
+                Login
+              </Button>
+              <div className="text-center">
+                <Link to="/register" className="btn-link">
+                  Don't have an account? Register here.
+                </Link>
+              </div>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
 
-            <Button variant="primary" type="submit" className="w-100">
-              Login
-            </Button>
-            <Link to= "/register" variant="primary" type="submit" className="w-100">
-              Register
-            </Link>
-          </Form>
-        </Col>
-      </Row>
-    </Container>
-  </>);
+      {/* Footer */}
+      <CustomFooter />
+    </>
+  );
 };
 
 export default Login;
