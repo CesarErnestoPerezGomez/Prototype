@@ -3,8 +3,6 @@ import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Navibar from '../components/Navbar';
-import CustomFooter from '../components/Footer';
-import '../css/styleLogin.css';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -15,73 +13,68 @@ const Login = () => {
   const navigate = useNavigate();
   const handleLogin = async (e) => {
     e.preventDefault();
+    setError('');
+    setSuccess('');
+
     try {
-      const response = await axios.post('http://localhost:3001/login', { email, password }, { withCredentials: true });
-      alert(response.data.message);
-      // Navigate to home on success
+      const response = await axios.post('http://localhost:3001/login', {
+        email,
+        password,
+      });
+
+      // Supongamos que el servidor responde con un token o una confirmación de éxito
+      const token = response.data.token;
+      setSuccess('Login successful');
+      localStorage.setItem('authToken', token); // Opcional: Guarda el token en localStorage
+
+      // Redirige al perfil
       navigate('/home');
-    } catch (error) {
-      alert(error.response.data.error);
+    } catch (err) {
+      setError(err.response?.data?.error || 'Invalid email or password');
     }
   };
 
   return (
-    <>
-      {/* Navbar */}
-      <Navibar />
 
-      {/* Login Form Section */}
-      <Container className="login-container mt-5 d-flex justify-content-center align-items-center">
-        <Row>
-          <Col xs={12} md={6}>
-            {/* Logo */}
-            <div className="text-center mb-4">
-              <img
-                src="/pics/Screenshot 2024-11-27 at 10.18.18 p.m..png" // Adjust path to your logo
-                alt="Logo"
-                className="login-logo"
+    <><Navibar/>
+    <Container className="mt-5">
+      <Row className="justify-content-center">
+        <Col xs={12} sm={8} md={6} lg={4}>
+          <h3 className="text-center mb-4">Login</h3>
+          {error && <Alert variant="danger">{error}</Alert>}
+          {success && <Alert variant="success">{success}</Alert>}
+          <Form onSubmit={handleLogin}>
+            <Form.Group className="mb-3" controlId="formEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
-            </div>
-            {/* Form */}
-            <h3 className="text-center mb-4">Login to House</h3>
-            {error && <Alert variant="danger">{error}</Alert>}
-            {success && <Alert variant="success">{success}</Alert>}
-            <Form onSubmit={handleLogin} className="p-4 rounded shadow-lg bg-white">
-              <Form.Group className="mb-3" controlId="formEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </Form.Group>
-              <Form.Group className="mb-3" controlId="formPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Enter your password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </Form.Group>
-              <Button type="submit" className="btn-personal w-100 mb-3">
-                Login
-              </Button>
-              <div className="text-center">
-                <Link to="/register" className="btn-link">
-                  Don't have an account? Register here.
-                </Link>
-              </div>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
+            </Form.Group>
 
-      {/* Footer */}
-      <CustomFooter />
-    </>
-  );
+            <Form.Group className="mb-3" controlId="formPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
+
+            <Button variant="primary" type="submit" className="w-100">
+              Login
+            </Button>
+            <Link to= "/register" variant="primary" type="submit" className="w-100">
+              Register
+            </Link>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
+    </> );
 };
 
 export default Login;
