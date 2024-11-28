@@ -4,9 +4,8 @@ import '../css/styleHome.css'; // Adjust the path as needed
 import Navibar from '../components/Navbar'; // Assuming Navbar component is created
 import CustomFooter from '../components/Footer'; // Assuming Footer component is created
 import { Carousel } from 'react-bootstrap';
-//import { useNavigate } from 'react-router-dom';
-//import axios from 'axios';
-//import { useState } from 'react';
+import ZillowAudience from './cards'; // Assuming ZillowAudience component is created
+
 import SearchBar from '../components/searchBar';
 
 function Home() {
@@ -92,6 +91,7 @@ function Home() {
     </Carousel>
   </div>
 </section>
+<ZillowAudience />
 
 <CustomFooter />
     </>

@@ -12,6 +12,7 @@ import Register from './components/Register';
  import HouseDetails from './components/page3';
  import SearchResults from './components/searchResults';
  import Profile from './components/profile';
+ import Help from './components/help';
 
  /*
 
@@ -41,6 +42,8 @@ function App() {
      <Route path='/houses/:zipCode' element={<HouseDetails />} />
      <Route path='/searchResults' element={<SearchResults />} /> 
      <Route path='/myProfile' element={<Profile/>} /> 
+     <Route path='/help' element={<Help/>} /> 
+
   
 
    </Routes>

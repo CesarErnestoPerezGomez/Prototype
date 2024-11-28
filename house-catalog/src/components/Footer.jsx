@@ -52,14 +52,17 @@ function CustomFooter() {
           <a href="https://github.com"><BsGithub /></a>
           <a href="https://dribbble.com"><BsDribbble /></a>
         </div>
-                <p>&copy; 2024 Your Company™. All Rights Reserved.</p>
+                <p>&copy; 2024 House™. All Rights Reserved.</p>
 
         
       </div>
 
-      
+      <img src={"https://www.zillowstatic.com/s3/pfs/static/footer-art.svg"} alt="Company Logo" />
+
     </footer>
+    
   );
+
 }
 
 export default CustomFooter;

@@ -1,0 +1,79 @@
+/* Zillow Audience Component Styles */
+.zillow-audience-section {
+    background-color: #ffffff; /* Brand's purple */
+    color: #9b59b6; /* Brand's white */
+  }
+  
+  .zillow-audience-section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  .cards-audience-section {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  .cards-audience-section h2 {
+    margin-bottom: 0;
+  }
+  
+  .footer {
+    margin-top: 0;
+  }
+  
+  .audience-info {
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .audience-info img {
+    max-width: 100px;
+  }
+  
+  .audience-info h4 {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .audience-info p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+  
+  .zillow-audience-section p {
+    text-align: center;
+    font-size: 0.75rem;
+    margin-top: 3rem;
+    color: #ffffff; /* Brand's white */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .zillow-audience-section {
+      padding: 2rem 0;
+    }
+  
+    .zillow-audience-section h2 {
+      font-size: 1.5rem;
+    }
+  
+    .audience-info img {
+      max-width: 80px;
+    }
+  
+    .audience-info h4 {
+      font-size: 1.15rem;
+    }
+  
+    .audience-info p {
+      font-size: 0.9rem;
+    }
+  
+    .zillow-audience-section p {
+      font-size: 0.65rem;
+    }
+  }
+  
