@@ -1,5 +1,5 @@
 import React from 'react';
-//import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
 // import { useEffect, useState } from 'react'; 
 // import axios from 'axios';
@@ -15,6 +15,9 @@ import Register from './components/Register';
  import Help from './components/help';
  import Buy from './components/buy';
  import Rent from './components/rent';
+ import Logout from './components/logout';
+
+ 
 
  /*
 
@@ -47,6 +50,7 @@ function App() {
      <Route path='/searchResults' element={<SearchResults />} /> 
      <Route path='/myProfile' element={<Profile/>} /> 
      <Route path='/help' element={<Help/>} /> 
+     <Route path="/logout" element={<Logout />} />
 
   
 

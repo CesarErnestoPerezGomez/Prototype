@@ -1,11 +1,11 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/styleCatalog.css'; // Adjust this import based on your folder structure
 import Navibar from '../components/Navbar'; // Assuming you’ll create a Navbar component
 import Footer2 from '../components/Footer2'; // Assuming you’ll create a Footer2 component
  import { useEffect, useState } from 'react';
  import axios from 'axios';
  import { Link } from 'react-router-dom';
+ 
 
  function Catalog() {
   const [houses, setHouses] = useState([])
