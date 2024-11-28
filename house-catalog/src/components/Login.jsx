@@ -5,12 +5,14 @@ import { Link } from 'react-router-dom';
 import Navibar from '../components/Navbar';
 import CustomFooter from '../components/Footer';
 import '../css/styleLogin.css';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const navigate = useNavigate();
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
