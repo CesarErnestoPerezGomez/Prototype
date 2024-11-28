@@ -13,6 +13,8 @@ import Register from './components/Register';
  import SearchResults from './components/searchResults';
  import Profile from './components/profile';
  import Help from './components/help';
+ import Buy from './components/buy';
+ import Rent from './components/rent';
 
  /*
 
@@ -39,6 +41,8 @@ function App() {
      <Route path='/services' element={<Services />} />
      <Route path='/sell' element={<Sell />} />
      <Route path='/catalog' element={<Catalog/>} />
+     <Route path='/buy-a-house' element={<Buy/>} />
+     <Route path='/rent-a-house' element={<Rent/>} />
      <Route path='/houses/:zipCode' element={<HouseDetails />} />
      <Route path='/searchResults' element={<SearchResults />} /> 
      <Route path='/myProfile' element={<Profile/>} /> 

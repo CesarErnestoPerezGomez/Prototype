@@ -16,13 +16,13 @@ function Navibar() {
       <Container className="custom-container">
         {/* Left Menu Items */}
         <Nav className="me-auto">
-          <Nav.Link as={Link} to="/catalog">Buy</Nav.Link>
-          <Nav.Link as={Link} to="/catalog">Rent</Nav.Link>
+          <Nav.Link as={Link} to="/buy-a-house">Buy</Nav.Link>
+          <Nav.Link as={Link} to="/rent-a-house">Rent</Nav.Link>
           <Nav.Link as={Link} to="/sell">Sell</Nav.Link>
         </Nav>
 
         {/* Logo in the Center */}
-        <Navbar.Brand as={Link} to="/home" className="mx-auto">
+        <Navbar.Brand as={Link} to="/home" className="mx-auto imagen-personal">
           <img src="/pics/Black White Simple House Logo.svg" alt="Logo" />
         </Navbar.Brand>
 

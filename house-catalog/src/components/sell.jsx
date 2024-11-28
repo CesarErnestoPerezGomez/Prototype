@@ -10,10 +10,11 @@ function Sell() {
 
       <section className="d-flex flex-column justify-content-center align-items-center vh-100">
         <div className="text-center">
-          <h1 className="display-4">¡En progreso!</h1>
-          <p className="lead">Esta sección está en desarrollo. Estamos trabajando para ofrecerte esta funcionalidad pronto.</p>
-          <p className="text-muted">Agradecemos tu paciencia y comprensión.</p>
-          <a href="/catalog" className="btn btn-primary mt-3">Volver al Catálogo</a>
+          <h1 className="display-4">In progress!</h1>
+          <p className="lead">
+          This section is under development. We are working to bring this functionality to you soon.</p>
+          <p className="text-muted">We appreciate your patience and understanding.</p>
+          <a href="/catalog" className="btn btn-primary mt-3">Return to catalog</a>
         </div>
       </section>
     </>
