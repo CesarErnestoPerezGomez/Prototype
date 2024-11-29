@@ -2,20 +2,24 @@ const express = require('express');
 const mongoose = require("mongoose");
 const cors = require('cors');
 const userModel = require('./src/models/users')
-const bodyParser = require('body-parser');
 const HouseModel  = require('./src/models/houses')
 const ContactModel  = require('./src/models/forms')
+
+const bodyParser = require('body-parser');
 const app = express();
 app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 app.use(express.json());  // Parse JSON data
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 require('dotenv').config();
+
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+
 
 // MongoDB Configuration
  const mongoDBUrl1 = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.2f8ph.mongodb.net/${process.env.DB}?retryWrites=true&w=majority&appName=Cluster0`;
@@ -156,12 +160,9 @@ app.get('/profile', async (req, res) => {
 
   try {
     const verified = jwt.verify(token, 'secret_key');
-    const user = await userModel.findById(verified.id).populate('savedHouses');;
-    if (!user) return res.status(404).json({ error: 'User not found' });
-
-    res.json({ user, savedHouses: user.savedHouses });
+    const user = await userModel.findById(verified.id);
+    res.json({ user });
   } catch (error) {
-    
     res.status(401).json({ error: 'Invalid token' });
   }
 });

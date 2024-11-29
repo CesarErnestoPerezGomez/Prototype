@@ -5,20 +5,11 @@ import Navibar from '../components/Navbar'; // Assuming Navbar component is crea
 import CustomFooter from '../components/Footer'; // Assuming Footer component is created
 import { Carousel } from 'react-bootstrap';
 import ZillowAudience from './cards'; // Assuming ZillowAudience component is created
-import axios from 'axios';
 import SearchBar from '../components/searchBar';
 
 function Home() {
 
-  const logout = async () => {
-    try {
-      const response = await axios.post('http://localhost:3001/logout', {}, { withCredentials: true });
-      console.log(response.data);
-      // Redirigir o hacer algo después del cierre de sesión
-    } catch (error) {
-      console.log("Error al cerrar sesión", error);
-    }
-  };
+  
   return (
     <>
     <Navibar />
@@ -100,10 +91,6 @@ function Home() {
   </div>
 </section>
 <ZillowAudience />
-
-
-// En tu componente, usa esta función
-<button onClick={logout}>Cerrar sesión</button>
 <CustomFooter />
     </>
   );
