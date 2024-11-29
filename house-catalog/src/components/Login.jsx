@@ -13,24 +13,14 @@ const Login = () => {
   const navigate = useNavigate();
   const handleLogin = async (e) => {
     e.preventDefault();
-    setError('');
-    setSuccess('');
-
     try {
-      const response = await axios.post('http://localhost:3001/login', {
-        email,
-        password,
-      });
-
-      // Supongamos que el servidor responde con un token o una confirmación de éxito
-      const token = response.data.token;
-      setSuccess('Login successful');
-      localStorage.setItem('authToken', token); // Opcional: Guarda el token en localStorage
-
-      // Redirige al perfil
+      const response = await axios.post('http://localhost:3001/login', { email, password }, { withCredentials: true });
+      alert(response.data.message);
+      navigate('/home'); 
+      // Navigate to home on success
       navigate('/home');
-    } catch (err) {
-      setError(err.response?.data?.error || 'Invalid email or password');
+    } catch (error) {
+      alert(error.response.data.error);
     }
   };
 
