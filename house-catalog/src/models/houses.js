@@ -10,6 +10,6 @@ const HouseSchema = new mongoose.Schema({
     bathrooms: Number,
     squareFeet: Number
   });
-  const HouseModel = mongoose.model('houses', HouseSchema);
+  const HouseModel = mongoose.model('House', HouseSchema);
 
   module.exports = HouseModel;  

@@ -160,7 +160,7 @@ app.get('/profile', async (req, res) => {
 
   try {
     const verified = jwt.verify(token, 'secret_key');
-    const user = await userModel.findById(verified.id);
+    const user = await userModel.findById(verified.id).populate('savedHouses');
     res.json({ user });
   } catch (error) {
     res.status(401).json({ error: 'Invalid token' });
