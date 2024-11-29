@@ -19,7 +19,6 @@ const Login = () => {
       alert(response.data.message);
       navigate('/home'); 
       // Navigate to home on success
-      navigate('/home');
     } catch (error) {
       alert(error.response.data.error);
     }
